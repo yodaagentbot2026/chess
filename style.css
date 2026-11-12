@@ -4,4 +4,5 @@ body { font-family: system-ui, sans-serif; text-align: center; background: #f4f1
 .light { background: #f0d9b5; }
 .dark { background: #b58863; }
 .selected { outline: 3px solid #2f80ed; outline-offset: -3px; }
+.lastmove { box-shadow: inset 0 0 0 3px #f6e05e; }
 #status { font-size: 18px; margin-top: 8px; }
