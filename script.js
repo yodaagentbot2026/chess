@@ -13,6 +13,7 @@ var board = [
 ];
 var turn = 'white';
 var selected = null;
+var lastMove = null;
 
 function isWhite(piece) { return piece >= 'A' && piece <= 'Z'; }
 
@@ -27,6 +28,7 @@ function render() {
       sq.dataset.row = row;
       sq.dataset.col = col;
       if (selected && selected.row === row && selected.col === col) sq.classList.add('selected');
+      if (lastMove && ((lastMove.from.row === row && lastMove.from.col === col) || (lastMove.to.row === row && lastMove.to.col === col))) sq.classList.add('lastmove');
       sq.addEventListener('click', onSquare);
       el.appendChild(sq);
     }
@@ -48,6 +50,7 @@ function onSquare(e) {
   if (from.row === row && from.col === col) { render(); return; }
   var target = board[row][col];
   if (target && (turn === 'white') === isWhite(target)) { selected = { row: row, col: col }; render(); return; }
+  lastMove = {from: from, to: {row: row, col: col}};
   board[row][col] = board[from.row][from.col];
   board[from.row][from.col] = '';
   turn = turn === 'white' ? 'black' : 'white';
