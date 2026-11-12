@@ -14,6 +14,10 @@ A simple chess game that runs in the browser. No build step, no dependencies —
 - `style.css` — board styling
 - `script.js` — board state and click-to-move logic
 
+## Development
+
+Just open `index.html` in a browser. No build step and no dependencies.
+
 ## Ideas to add next
 
 - Legal-move validation and check/checkmate detection
