@@ -23,3 +23,4 @@ Just open `index.html` in a browser. No build step and no dependencies.
 - Legal-move validation and check/checkmate detection
 - Move history and undo
 - Play vs the Stockfish engine (WebAssembly)
+- Sound effects
