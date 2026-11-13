@@ -13,9 +13,12 @@ var board = [
 ];
 var turn = 'white';
 var selected = null;
+var history = [];
 var lastMove = null;
 
 function isWhite(piece) { return piece >= 'A' && piece <= 'Z'; }
+
+function squareName(sq) { return 'abcdefgh'[sq.col] + (8 - sq.row); }
 
 function render() {
   var el = document.getElementById('board');
@@ -34,6 +37,8 @@ function render() {
     }
   }
   document.getElementById('status').textContent = (turn === 'white' ? 'White' : 'Black') + ' to move';
+  var h = document.getElementById('history');
+  if (h) h.textContent = history.join(' ');
 }
 
 function onSquare(e) {
@@ -51,6 +56,7 @@ function onSquare(e) {
   var target = board[row][col];
   if (target && (turn === 'white') === isWhite(target)) { selected = { row: row, col: col }; render(); return; }
   lastMove = {from: from, to: {row: row, col: col}};
+  history.push(squareName(from) + '-' + squareName({row: row, col: col}));
   board[row][col] = board[from.row][from.col];
   board[from.row][from.col] = '';
   turn = turn === 'white' ? 'black' : 'white';
