@@ -58,3 +58,8 @@ function onSquare(e) {
 }
 
 render();
+
+document.getElementById('resign').addEventListener('click', function () {
+  // Simplest correct reset for now: reload the starting position.
+  location.reload();
+});
